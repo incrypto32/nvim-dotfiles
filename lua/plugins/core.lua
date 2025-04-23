@@ -1,6 +1,6 @@
 return {
   "numToStr/Comment.nvim",
-    -- Auto pairing of parantheses
+  -- Auto pairing of parantheses
   {
     'windwp/nvim-autopairs',
     event = "InsertEnter",
@@ -22,9 +22,17 @@ return {
     keys = {
       { "<leader>nt", "<cmd>NvimTreeToggle<CR>", desc = "Toggle file tree" },
     }
+  },
+  {
+    "kylechui/nvim-surround",
+    event = "VeryLazy",
+    config = function()
+      require("nvim-surround").setup({
+        -- Configuration here, or leave empty to use defaults
+      })
+    end
   }
-
--- {
+  -- {
   --   'akinsho/bufferline.nvim',
   --   version = "*",
   --   dependencies = 'nvim-tree/nvim-web-devicons',
