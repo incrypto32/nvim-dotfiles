@@ -6,14 +6,6 @@ return {
   },
 
   config = function()
-    require("telescope").setup {
-      extensions = {
-        file_browser = {
-          hijack_netrw = true
-        }
-      }
-    }
-
     require("telescope").load_extension("file_browser")
   end,
 
@@ -23,6 +15,7 @@ return {
     { "<leader>ff", "<cmd>Telescope find_files<cr>",           desc = "Find Files" },
     { "<leader>fg", "<cmd>Telescope live_grep<cr>",            desc = "Live Grep" },
     { "<leader>fb", "<cmd>Telescope file_browser<cr>",         desc = "File Browser" },
+    { "<leader>bb", "<cmd>Telescope buffers<cr>",              desc = "Switch Buffers" },
 
     -- LSP + utility (command-style)
     { "gd",         "<cmd>Telescope lsp_definitions<cr>",      desc = "Go to definition" },

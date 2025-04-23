@@ -5,38 +5,6 @@ return {
     config = true,
   },
 
-  -- 🔌 Mason-LSP bridge
-  -- Mason is a tool to easily install LSPs
-  -- nvim-lspconfig is nvims native LSP config
-  -- To have nvim-lsp config work with mason we need this birdge mason-ls-config
-  -- This is used to setup handlers to create an nvim-lspconfig whenever new lsp is installed
-  -- And do other stuff
-  {
-    "williamboman/mason-lspconfig.nvim",
-    dependencies = {
-      "williamboman/mason.nvim",
-      "neovim/nvim-lspconfig",
-    },
-    config = function()
-      local mason_lsp = require("mason-lspconfig")
-      local lspconfig = require("lspconfig")
-
-      mason_lsp.setup({
-        automatic_installation = true,
-      })
-
-      mason_lsp.setup_handlers({
-        function(server)
-          lspconfig[server].setup({
-            flags = {
-              debounce_text_changes = 100,
-            },
-          })
-        end,
-      })
-    end,
-  },
-
   -- 🔤 LSP autocompletion
   -- This is the plugin that provides autocompletion
   {
@@ -58,6 +26,41 @@ return {
       })
     end,
   },
+
+  -- 🔌 Mason-LSP bridge
+  -- Mason is a tool to easily install LSPs
+  -- nvim-lspconfig is nvims native LSP config
+  -- To have nvim-lsp config work with mason we need this birdge mason-ls-config
+  -- This is used to setup handlers to create an nvim-lspconfig whenever new lsp is installed
+  -- And do other stuff
+  {
+    "williamboman/mason-lspconfig.nvim",
+    dependencies = {
+      "williamboman/mason.nvim",
+      "neovim/nvim-lspconfig",
+    },
+    config = function()
+      local mason_lsp = require("mason-lspconfig")
+      local lspconfig = require("lspconfig")
+      local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+      mason_lsp.setup({
+        automatic_installation = true,
+      })
+
+      mason_lsp.setup_handlers({
+        function(server)
+          lspconfig[server].setup({
+            capabilities= capabilities,
+            flags = {
+              debounce_text_changes = 100,
+            },
+          })
+        end,
+      })
+    end,
+  },
+
 
   -- 💡 Lua dev support for better LSP in config files
   {

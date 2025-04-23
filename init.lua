@@ -1,3 +1,6 @@
+-- Disable netrw we are using custom stuff
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
 vim.g.mapleader = " "         -- space as leader
 vim.g.maplocalleader = "\\"
@@ -13,3 +16,6 @@ vim.opt.expandtab = true
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 vim.opt.autoindent = true
+vim.opt.smartindent = true
+print ("i use vim btw")
+
