@@ -20,12 +20,10 @@ vim.keymap.set("n", "<leader>H", "<C-w>H")
 vim.keymap.set("n", "<leader>J", "<C-w>J")
 vim.keymap.set("n", "<leader>K", "<C-w>K")
 vim.keymap.set("n", "<leader>L", "<C-w>L")
+vim.keymap.set("n", "<S-Tab>", "<C-w>w", { desc = "Cycle windows" })
 
--- Resize splits
-vim.keymap.set("n", "<C-+>", "<C-w>+")
-vim.keymap.set("n", "<leader>-", "<C-w>-")
-vim.keymap.set("n", "<leader><", "<C-w><")
-vim.keymap.set("n", "<leader>>", "<C-w>>")
+-- Use jj to exit insert mode
+vim.keymap.set("i", "jj", "<Esc>", { desc = "Exit insert mode" })
 
 -- Terminal related
 function _G.set_terminal_keymaps()

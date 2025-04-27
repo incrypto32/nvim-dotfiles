@@ -47,18 +47,47 @@ return {
       mason_lsp.setup({
         automatic_installation = true,
       })
-
       mason_lsp.setup_handlers({
         function(server)
+          if server == "rust_analyzer" then
+            return
+          end
           lspconfig[server].setup({
-            capabilities= capabilities,
+            capabilities = capabilities,
             flags = {
               debounce_text_changes = 100,
             },
           })
         end,
       })
-    end,
+   end,
+  },
+
+  {
+    'mrcjkb/rustaceanvim',
+    version = '^6', -- Recommended
+    lazy = false,   -- This plugin is already lazy
+  },
+
+  -- Test support
+  {
+    "nvim-neotest/neotest",
+    dependencies = {
+      "nvim-neotest/nvim-nio",
+      "nvim-lua/plenary.nvim",
+      "antoinemadec/FixCursorHold.nvim",
+      'mrcjkb/rustaceanvim',
+      "nvim-treesitter/nvim-treesitter"
+    },
+    config = function()
+      require('neotest').setup {
+        -- ...,
+        adapters = {
+          -- ...,
+          require('rustaceanvim.neotest')
+        },
+      }
+    end
   },
 
 
@@ -72,4 +101,6 @@ return {
       },
     },
   },
+
+
 }

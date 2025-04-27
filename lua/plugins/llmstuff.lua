@@ -8,9 +8,9 @@ return {
       suggestion = {
         enabled = true,
         auto_trigger = false,
-        keymap = {
+        keymap = { 
           accept =
-          "<S-Tab>",
+          ",,",
           accept_word = false,
           accept_line = false,
           next = "<C-n>",
