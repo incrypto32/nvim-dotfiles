@@ -35,8 +35,8 @@ return {
         tint = -70,
         window_ignore_function = function(winid)
           local bufid = vim.api.nvim_win_get_buf(winid)
-          local buftype = vim.api.nvim_buf_get_option(bufid, "buftype")
-          local filetype = vim.api.nvim_buf_get_option(bufid, "filetype")
+          local buftype = vim.bo[bufid].buftype
+          local filetype = vim.bo[bufid].filetype
           local floating = vim.api.nvim_win_get_config(winid).relative ~= ""
 
           -- Do not tint `terminal`, floating windows, or NvimTree, tint everything else
