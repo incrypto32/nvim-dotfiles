@@ -60,4 +60,22 @@ return {
   --
   -- },
 
+  {
+    "NeogitOrg/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "sindrets/diffview.nvim",
+      "nvim-telescope/telescope.nvim",
+    },
+    cmd = "Neogit",
+    config = function()
+      require("neogit").setup({
+        auto_refresh = true,
+        integrations = {
+          diffview = true,
+        },
+      })
+    end,
+  },
+
 }
