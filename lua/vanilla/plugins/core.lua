@@ -32,7 +32,7 @@ return {
     "levouh/tint.nvim",
     config = function()
       require("tint").setup({
-        tint = -70,
+        tint = -30,
         window_ignore_function = function(winid)
           local bufid = vim.api.nvim_win_get_buf(winid)
           local buftype = vim.bo[bufid].buftype
@@ -40,23 +40,9 @@ return {
           local floating = vim.api.nvim_win_get_config(winid).relative ~= ""
 
           -- Do not tint `terminal`, floating windows, or NvimTree, tint everything else
-          return buftype == "terminal" or floating or filetype == "NvimTree"
+          return floating or filetype == "NvimTree"
         end
       })
     end
   }
-  -- {
-  --   "sunjon/shade.nvim",
-  --   config = function()
-  --     require 'shade'.setup({
-  --       overlay_opacity = 50,
-  --       opacity_step = 1,
-  --       keys = {
-  --         brightness_up   = '<C-Up>',
-  --         brightness_down = '<C-Down>',
-  --         toggle          = '<Leader>s',
-  --       }
-  --     })
-  --   end
-  -- }
 }

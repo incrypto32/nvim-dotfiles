@@ -17,16 +17,24 @@ local general = augroup("General", { clear = true })
 -- })
 --
 
-autocmd({ "FocusLost", "BufLeave", "BufWinLeave", "InsertLeave" }, {
-  callback = function()
-    if vim.bo.filetype ~= "" and vim.bo.buftype == "" then
-      vim.cmd("update")
-    end
-  end,
-  group = general,
-  desc = "Auto Save and Notify LSP",
-})
-
+-- autocmd({ "FocusLost", "BufLeave", "BufWinLeave", "InsertLeave" }, {
+--   group = general,
+--   desc = "Auto save and format safely",
+--   callback = function()
+--     if
+--         vim.bo.filetype ~= ""
+--         and vim.bo.buftype == ""               -- only real file buffers
+--         and vim.bo.modified                    -- only modified buffers
+--         and vim.api.nvim_buf_get_name(0) ~= "" -- not empty unnamed buffer
+--     then
+--       vim.schedule(function()
+--         vim.lsp.buf.format({ async = false })
+--         vim.cmd("silent! update")
+--       end)
+--     end
+--   end,
+-- })
+--
 autocmd("BufWritePre", {
   callback = function()
     vim.lsp.buf.format({ async = false })

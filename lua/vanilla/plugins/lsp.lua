@@ -47,20 +47,20 @@ return {
       mason_lsp.setup({
         automatic_installation = true,
       })
-      mason_lsp.setup_handlers({
-        function(server)
-          if server == "rust_analyzer" then
-            return
-          end
-          lspconfig[server].setup({
-            capabilities = capabilities,
-            flags = {
-              debounce_text_changes = 100,
-            },
-          })
-        end,
-      })
-   end,
+      -- mason_lsp.setup_handlers({
+      --   function(server)
+      --     if server == "rust_analyzer" then
+      --       return
+      --     end
+      --     lspconfig[server].setup({
+      --       capabilities = capabilities,
+      --       flags = {
+      --         debounce_text_changes = 100,
+      --       },
+      --     })
+      --   end,
+      -- })
+    end,
   },
 
   {
