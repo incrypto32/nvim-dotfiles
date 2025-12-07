@@ -43,6 +43,15 @@ return {
   },
 
   {
+    "nvim-tree/nvim-tree.lua",
+    opts = {
+      git = {
+        ignore = false,
+      },
+    },
+  },
+
+  {
     "nvim-treesitter/nvim-treesitter",
     opts = {
       ensure_installed = {

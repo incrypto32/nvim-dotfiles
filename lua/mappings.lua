@@ -6,6 +6,9 @@ local map = vim.keymap.set
 
 map("i", "jk", "<ESC>")
 
+-- Save file with Ctrl+S
+map({ "n", "i" }, "<C-s>", "<cmd>w<CR>", { desc = "Save file" })
+
 -- Test Meta key
 map("n", "<M-t>", function() vim.notify("Meta key works!", vim.log.levels.INFO) end, { desc = "Test Meta key" })
 
