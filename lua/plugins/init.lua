@@ -27,6 +27,13 @@ return {
     opts = {}
   },
 
+  {
+    "sindrets/diffview.nvim",
+    opts = {
+      enhanced_diff_hl = true,
+    }
+  },
+
   -- test new blink
   { import = "nvchad.blink.lazyspec" },
 
